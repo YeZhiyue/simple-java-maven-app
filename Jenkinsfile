@@ -23,6 +23,8 @@ pipeline {
         }
         stage('Deliver') {
             steps {
+                echo 'Jenkins YeZhiyue'
+                sh 'pwd'
                 sh './jenkins/scripts/deliver.sh'
             }
         }
