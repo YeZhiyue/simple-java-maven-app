@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+            args '-v /var/jenkins_home:/root'
         }
     }
     stages {
@@ -22,8 +22,7 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-        stage('Install') {
+        } stage('Install') {
             steps {
                 sh 'mvn install'
             }
