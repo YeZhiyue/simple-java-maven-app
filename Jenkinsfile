@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo '我的定时扫描策略 每次隔离一分钟'
+                echo '1 我的定时扫描策略 每次隔离一分钟'
                 sh 'mvn -vesion'
                 sh 'mvn -B -DskipTests clean package'
             }
