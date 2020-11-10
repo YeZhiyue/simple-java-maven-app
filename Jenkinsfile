@@ -1,8 +1,8 @@
 pipeline {
     agent {
-        node {
-            label 'my-maven'
-            customWorkspace '/home/mysoft/maven/apache-maven-3.6.3'
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
         }
     }
     stages {
