@@ -1,14 +1,15 @@
 pipeline {
     agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
+        node {
+            label 'my-maven'
+            customWorkspace '/home/mysoft/maven/apache-maven-3.6.3'
         }
     }
     stages {
         stage('Build') {
             steps {
                 echo '我的定时扫描策略 每次隔离一分钟'
+                sh 'mvn -vesion'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
@@ -22,9 +23,13 @@ pipeline {
                 }
             }
         }
+        stage('Install') {
+            steps {
+                sh 'mvn install'
+            }
+        }
         stage('Deliver') {
             steps {
-                echo 'Jenkins YeZhiyue'
                 sh 'pwd'
                 sh './jenkins/scripts/deliver.sh'
             }
