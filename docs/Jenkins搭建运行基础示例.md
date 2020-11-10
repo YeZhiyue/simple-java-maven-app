@@ -63,6 +63,8 @@ docker exec -it jenkins-tutorials bash
 
 安装插件然后配置语言即可：Locale plugin 
 
+zh_CN
+
 ---
 
 # 简单示例
