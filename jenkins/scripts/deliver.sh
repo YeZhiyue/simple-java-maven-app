@@ -32,6 +32,6 @@ done
 mv ''$TARGET_PATH'/'$CURRENT_JAR'' ''$TARGET_PATH'/'$CURRENT_JAR'.'$BAK_TIME'bak'
 # 拷贝新的 jar
 mv '/target/'$CURRENT_JAR'' $TARGET_PATH
-# 启动新的 jar
+# 启动新的 jar a
 java -jar ''$TARGET_PATH'/'$CURRENT_JAR''
 
