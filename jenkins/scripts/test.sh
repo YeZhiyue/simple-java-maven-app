@@ -1,27 +1,20 @@
 #!/usr/bin/env bash
 
-echo 'The following Maven command installs your Maven-built Java application'
 
-NAME='h'${JAVA_HOME}'h'
+getFileName() {
+  name=$1
+  len=${#name}
+  endLen=`expr $len - 3`
+  sub=${name:endLen}
+#  echo $name
+#  echo $len
+#  echo $endLen
+#  echo '不带后缀文件名：'$sub''
+   echo $sub
+}
+x=`getFileName 'app.jar'`
+echo $x
+#echo `getFileName 'app.jar'`
 
-echo $NAME
+#echo
 
-set -x
-
-echo x
-
-VERSION='m'${MAVEN_HOME}'m'
-
-echo $VERSION
-
-APP=''${NAME}'-'${VERSION}'.jar'
-
-echo $APP
-
-mv $APP h1
-
-DIR=pwd
-
-echo $DIR
-
-echo 'success'
