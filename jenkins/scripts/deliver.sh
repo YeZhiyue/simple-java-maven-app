@@ -29,7 +29,12 @@ for i in $BACK_FILES ; do
     rm $i
 done
 # 备份原来的文件
-mv ''$TARGET_PATH'/'$CURRENT_JAR'' ''$TARGET_PATH'/'$CURRENT_JAR'.'$BAK_TIME'bak'
+if [ -f ''$TARGET_PATH'/'$CURRENT_JAR'' ];then
+  echo "文件存在"
+  mv ''$TARGET_PATH'/'$CURRENT_JAR'' ''$TARGET_PATH'/'$CURRENT_JAR'.'$BAK_TIME'bak'
+else
+  echo "文件不存在"
+fi
 # 拷贝新的 jar
 mv './target/'$CURRENT_JAR'' $TARGET_PATH
 # 启动新的 jar a
