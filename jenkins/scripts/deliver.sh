@@ -5,7 +5,8 @@ BAK_TIME=`date "+%Y-%m-%d"`
 echo '当前时间:'$BAK_TIME''
 CURRENT_PATH=`pwd`
 echo '当前路径:'$CURRENT_PATH''
-TARGET_PATH='/home/project'
+# 如果是Docker安装Jenkins，这里就需要配置容器内的路径了
+TARGET_PATH='/var/jenkins_home/dev_projects/helloworld'
 echo '目标路径:'$TARGET_PATH''
 # 当前打包的 jar
 CURRENT_JAR=''
@@ -30,7 +31,7 @@ done
 # 备份原来的文件
 mv ''$TARGET_PATH'/'$CURRENT_JAR'' ''$TARGET_PATH'/'$CURRENT_JAR'.'$BAK_TIME'bak'
 # 拷贝新的 jar
-mv 'target/'$CURRENT_JAR'' $TARGET_PATH
+mv '../../target/'$CURRENT_JAR'' $TARGET_PATH
 # 启动新的 jar
 java -jar ''$TARGET_PATH'/'$CURRENT_JAR''
 
