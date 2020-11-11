@@ -1,22 +1,23 @@
 #!/usr/bin/env bash
 
-# 定义变量
+# 第一步：配置我们需要使用的变量
 BAK_TIME=`date "+%Y-%m-%d"`
 echo '当前时间:'$BAK_TIME''
 CURRENT_PATH=`pwd`
 echo '当前路径:'$CURRENT_PATH''
 TARGET_PATH='/home/project'
 echo '目标路径:'$TARGET_PATH''
+# 当前打包的 jar
+CURRENT_JAR=''
 
-# mv /a.md $TARGET_PATH 移动我们的工程到指定的目录下面
-
-# 打包
+# 第二不：打包
 mvn install
 # 获取打包文件的Name
 NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
 # 获取文件的发布版本
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
-#
+
+# 第三步：更新之前的代码仓库
 CURRENT_JAR=''${NAME}'-'${VERSION}'.jar'
 # 停止原来的项目
 pkill -f ''$TARGET_PATH'/'$CURRENT_JAR''
